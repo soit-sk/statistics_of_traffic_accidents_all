@@ -30,21 +30,21 @@ my $dt = Database::DumpTruck->new({
 });
 
 # Get last date from db.
-my $ret_ar = eval {
-	$dt->execute('SELECT MAX(Date) FROM data');
-};
+#my $ret_ar = eval {
+#	$dt->execute('SELECT MAX(Date) FROM data');
+#};
 my $cur_time;
-if (! $EVAL_ERROR && @{$ret_ar} && exists $ret_ar->[0]->{'max(date)'}
-	&& defined $ret_ar->[0]->{'max(date)'}) {
-
-	my $last_date = $ret_ar->[0]->{'max(date)'};
-	my ($last_year, $last_mon, $last_day) = split m/-/ms, $last_date;
-	$cur_time = timelocal(0, 0, 12, $last_day, $last_mon - 1,
-		$last_year - 1900);
-	$cur_time += 24 * 60 * 60;
-} else {
+#if (! $EVAL_ERROR && @{$ret_ar} && exists $ret_ar->[0]->{'max(date)'}
+#	&& defined $ret_ar->[0]->{'max(date)'}) {
+#
+#	my $last_date = $ret_ar->[0]->{'max(date)'};
+#	my ($last_year, $last_mon, $last_day) = split m/-/ms, $last_date;
+#	$cur_time = timelocal(0, 0, 12, $last_day, $last_mon - 1,
+#		$last_year - 1900);
+#	$cur_time += 24 * 60 * 60;
+#} else {
 	$cur_time = $first_time;
-}
+#}
 
 # Check for possible new data.
 if ($cur_time >= $time) {
