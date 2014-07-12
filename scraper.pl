@@ -20,7 +20,7 @@ my $URL = 'http://aplikace.policie.cz/statistiky-dopravnich-nehod/Default.aspx';
 # 10.2.2009 12:00
 my $first_time = 1234263600;
 
-# Actual time.
+# Time of previous day.
 my $time = time - 24 * 60 * 60;
 
 # Open a database handle.
