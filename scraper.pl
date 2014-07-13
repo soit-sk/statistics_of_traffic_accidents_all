@@ -109,7 +109,7 @@ sub get_db_date {
 sub post_time {
 	my $time = shift;
 	my $date = get_post_date($time);
-	print "Get data for '$date' date.\n";
+	print "Get data for '$date' date: ";
 	my $post = $ua->post($URL, {
 		'__VIEWSTATE' => $viewstate,
 		'__EVENTVALIDATION' => $eventvalidation,
@@ -120,6 +120,7 @@ sub post_time {
 	if ($post->is_success) {
 		save_data(encode_utf8($post->decoded_content), $time);
 	} else {
+		print "KO\n";
 		die "Cannot POST page for '$date'.";
 	}
 	return;
@@ -133,6 +134,7 @@ sub save_data {
         my $root = $tree->elementify;
         my $table = $root->find_by_attribute('id', 'celacr');
 	if (! defined $table) {
+		print "No data\n";
 		return;
 	}
         my @tr = $table->content_list;
@@ -166,5 +168,6 @@ sub save_data {
 			'Influence of alcohol' => $data[11],
 		});
         }
+	print "OK\n";
 	return;
 }
