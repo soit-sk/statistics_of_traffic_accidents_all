@@ -26,7 +26,7 @@ my $time = time - 24 * 60 * 60;
 # Open a database handle.
 my $dt = Database::DumpTruck->new({
 	'dbname' => 'data.sqlite',
-	'debug' => 1,
+#	'debug' => 1,
 	'table' => 'data',
 });
 
@@ -155,17 +155,17 @@ sub save_data {
 		$dt->insert({
 			'Date' => $db_date,
 			'Region' => decode_utf8($data[0]),
-			'Number of accidents' => $data[1],
+			'Number_of_accidents' => $data[1],
 			'Deaths' => $data[2],
-			'Severely wounded' => $data[3],
-			'Slightly wounded' => $data[4],
+			'Severely_wounded' => $data[3],
+			'Slightly_wounded' => $data[4],
 			'Damage' => $data[5],
-			'Excessive speed' => $data[6],
-			'Giving priority in driving' => $data[7],
-			'Improper overtaking' => $data[8],
-			'Wrong way driving' => $data[9],
-			'Other cause' => $data[10],
-			'Influence of alcohol' => $data[11],
+			'Excessive_speed' => $data[6],
+			'Giving_priority_in_driving' => $data[7],
+			'Improper_overtaking' => $data[8],
+			'Wrong_way_driving' => $data[9],
+			'Other_cause' => $data[10],
+			'Influence_of_alcohol' => $data[11],
 		});
 	}
 	print "OK\n";
