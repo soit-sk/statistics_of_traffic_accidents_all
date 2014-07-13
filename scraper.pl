@@ -6,11 +6,11 @@ use strict;
 use warnings;
 
 # Modules.
-use English;
-use Encode qw(decode_utf8 encode_utf8);
-use LWP::UserAgent;
-use HTML::TreeBuilder;
 use Database::DumpTruck;
+use Encode qw(decode_utf8 encode_utf8);
+use English;
+use HTML::TreeBuilder;
+use LWP::UserAgent;
 use POSIX qw(strftime);
 use Time::Local;
 
