@@ -25,7 +25,7 @@ my $time = time - 24 * 60 * 60;
 
 # Open a database handle.
 my $dt = Database::DumpTruck->new({
-	'dbname' => 'data.sqlite', 
+	'dbname' => 'data.sqlite',
 	'debug' => 1,
 	'table' => 'data',
 });
