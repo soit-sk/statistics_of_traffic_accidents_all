@@ -14,6 +14,9 @@ use Database::DumpTruck;
 use POSIX qw(strftime);
 use Time::Local;
 
+# Don't buffer.
+$OUTPUT_AUTOFLUSH = 1;
+
 # URL of service.
 my $URL = 'http://aplikace.policie.cz/statistiky-dopravnich-nehod/Default.aspx';
 
