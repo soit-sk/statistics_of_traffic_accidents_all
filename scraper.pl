@@ -130,27 +130,27 @@ sub post_time {
 sub save_data {
 	my ($data, $time) = @_;
 	my $tree = HTML::TreeBuilder->new;
-        $tree->parse($data);
-        my $root = $tree->elementify;
-        my $table = $root->find_by_attribute('id', 'celacr');
+	$tree->parse($data);
+	my $root = $tree->elementify;
+	my $table = $root->find_by_attribute('id', 'celacr');
 	if (! defined $table) {
 		print "No data\n";
 		return;
 	}
-        my @tr = $table->content_list;
-        shift @tr;
-        shift @tr;
-        pop @tr;
-        pop @tr;
-        foreach my $tr (@tr) {
-                my @data;
-                my @td = $tr->content_list;
-                pop @td;
-                foreach my $td (@td) {
-                        my $text = $td->as_text;
-                        $text =~ s/\s*$//msg;
-                        push @data, $text;
-                }
+	my @tr = $table->content_list;
+	shift @tr;
+	shift @tr;
+	pop @tr;
+	pop @tr;
+	foreach my $tr (@tr) {
+		my @data;
+		my @td = $tr->content_list;
+		pop @td;
+		foreach my $td (@td) {
+			my $text = $td->as_text;
+			$text =~ s/\s*$//msg;
+			push @data, $text;
+		}
 		my $db_date = get_db_date($time);
 		$dt->insert({
 			'Date' => $db_date,
@@ -167,7 +167,7 @@ sub save_data {
 			'Other cause' => $data[10],
 			'Influence of alcohol' => $data[11],
 		});
-        }
+	}
 	print "OK\n";
 	return;
 }
