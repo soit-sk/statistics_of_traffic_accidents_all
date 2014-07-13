@@ -132,6 +132,9 @@ sub save_data {
         $tree->parse($data);
         my $root = $tree->elementify;
         my $table = $root->find_by_attribute('id', 'celacr');
+	if (! defined $table) {
+		return;
+	}
         my @tr = $table->content_list;
         shift @tr;
         shift @tr;
